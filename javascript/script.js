@@ -113,18 +113,60 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Function to handle the code redeem process
 // Function to handle code redemption and update price
-function redeemPromoCode(code) {
-    // For simplicity, let's assume the code "QUANTUM-01" gives a 3% discount
-    if (code === "QUANTUM-01") {
+// Simulasi penyimpanan untuk kode promo yang telah digunakan
+let usedCodes = []; // Kode yang digunakan, harus disimpan di tempat yang persisten
+const MAX_USES = 4; // Jumlah maksimum penggunaan
+const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1250487187489947851/wDyA2tTG6aqE8JKpQ2CvImu7LOzIbx08Vqm_6Z3G5Uw68I9qwFyMums9vNrPfUIml3iw';
+
+// Fungsi untuk mengirim log ke Discord webhook
+function sendLogToDiscord(code, user) {
+    const message = {
+        content: `Promo code ${code} has been redeemed by ${user}.`,
+    };
+
+    fetch(DISCORD_WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(message),
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('Log sent to Discord successfully.');
+        } else {
+            console.error('Failed to send log to Discord.');
+        }
+    })
+    .catch(error => {
+        console.error('Error sending log to Discord:', error);
+    });
+}
+
+// Fungsi untuk menebus kode promo
+function redeemPromoCode(code, user) {
+    // Cek apakah kode promo sudah digunakan maksimal
+    const codeUsage = usedCodes.filter(c => c.code === code).length;
+    if (codeUsage >= MAX_USES) {
+        return {
+            success: false,
+            message: 'Promo code has already been used by the maximum number of people.'
+        };
+    }
+
+    // Untuk kesederhanaan, kita anggap kode "QUANTUM-01" memberikan diskon 5%
+    if (code === 'QUANTUM-01') {
+        usedCodes.push({ code: code, user: user });
+        sendLogToDiscord(code, user); // Kirim log ke Discord
         return {
             success: true,
-            discount: 0.03, // 3% discount
-            message: "Success Redeem Promo!"
+            discount: 0.05, // 5% diskon
+            message: 'Success Redeem Promo!'
         };
     } else {
         return {
             success: false,
-            message: "Invalid promo code"
+            message: 'Invalid promo code'
         };
     }
 }
@@ -181,7 +223,7 @@ if (promoResult.success) {
 
     // Prepare data for Discord webhook
     const message = {
-        content: `# Request Modpack\n**Client:** ${gameName}\n**Details:** ${gameDetails}\n**Discord Username:** ${discordUsername}\n**Price:** ${document.getElementById('price').textContent}`
+        content: `# Request Modpack\n**Client:** ${gameName}\n**Details:** ${gameDetails}\n**Discord Username:** ${discordUsername}\n**Price:** ${document.getElementById('price').textContent}\n**Note : PHP Banned 3 Hari**`
     };
 
     // Send data to Discord webhook
@@ -218,40 +260,31 @@ document.addEventListener('DOMContentLoaded', function () {
         navLinks.classList.toggle('show');
     });
 });
-document.addEventListener('DOMContentLoaded', function () {
-    // Function to fetch and update visit count
-    function updateVisitCounter() {
-        fetch('/api/get-visit-count') // Endpoint to get the current visit count
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('visit-counter').innerText = `Visits Web: ${data.count}`;
-            })
-            .catch(error => console.error('Error fetching visit count:', error));
+// Mencegah klik kanan
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
+// Mencegah pemilihan teks
+document.addEventListener('selectstart', function(e) {
+    e.preventDefault();
+});
+// Mencegah Inspect Element
+document.onkeydown = function(e) {
+    if(e.keyCode == 123) {
+       return false;
     }
-
-    // Update visit counter every 1 minute
-    setInterval(updateVisitCounter, 60000); // 60000 ms = 1 minute
-
-    // Initial update
-    updateVisitCounter();
-});
-const express = require('express');
-const app = express();
-const port = 3000;
-
-let visitCount = 0;
-
-// Middleware to simulate visit count increment
-app.use((req, res, next) => {
-    visitCount += 1; // Increment visit count on every request
-    next();
-});
-
-app.get('/api/get-visit-count', (req, res) => {
-    res.json({ count: visitCount });
-});
-
-app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
-});
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+       return false;
+    }
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+       return false;
+    }
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+       return false;
+    }
+    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+       return false;
+    }
+}
 
