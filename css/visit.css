@@ -1,0 +1,9 @@
+#visit-counter-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#visit-counter {
+    font-size: 1.2em;
+    color: #1ab5fd;
+}

@@ -1,0 +1,153 @@
+form {
+    background-color: #2a2a2a;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 20px auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    animation: fadeInUp 0.8s ease-in-out;
+}
+
+form label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+    color: #ffcc00;
+    text-align: left;
+    font-size: 14px;
+    animation: slideIn 0.7s ease-in-out;
+}
+
+form input[type="text"],
+form textarea {
+    width: 70%;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background-color: #1a1a1a;
+    color: #f2f2f2;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+form input[type="text"]:focus,
+form textarea:focus {
+    border-color: #ffcc00;
+    outline: none;
+    box-shadow: 0 0 6px rgba(255, 204, 0, 0.7);
+}
+
+form button {
+    background-color: #ffcc00;
+    color: #1a1a1a;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s, transform 0.3s;
+    animation: zoomIn 0.9s ease-in-out;
+}
+
+form button:hover {
+    background-color: #e6b800;
+    transform: translateY(-2px) scale(1.05);
+}
+
+#price-info {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #ffcc00;
+    text-align: center;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Organized, centered, and modern table styling */
+form table {
+    width: 100%;
+    margin-top: 15px;
+    border-collapse: collapse;
+    animation: fadeInUp 1s ease-in-out;
+    text-align: center;
+    font-size: 14px;
+}
+
+form table th,
+form table td {
+    padding: 12px;
+    border: 1px solid #333;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+form table th {
+    background-color: #333;
+    color: #ffcc00;
+    font-weight: bold;
+    animation: slideIn 0.9s ease-in-out;
+}
+
+form table td {
+    background-color: #1a1a1a;
+    color: #f2f2f2;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+form table tr:hover td {
+    background-color: #2a2a2a;
+}
+
+form table th,
+form table td {
+    text-align: center;
+    vertical-align: middle;
+}

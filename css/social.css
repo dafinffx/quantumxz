@@ -1,0 +1,87 @@
+/* Contact Section */
+#contact {
+    padding: 20px;
+    background-color: #2a2a2a; /* Dark background for contact section */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Soft shadow effect */
+    max-width: 600px; /* Max width for better readability */
+    margin: 20px auto 1.5rem; /* Centered with bottom margin of 1.5rem */
+    text-align: center; /* Center text */
+    animation: fadeInUp 1s ease-in-out;
+}
+
+#contact h2 {
+    color: #ffcc00; /* Heading color */
+    margin-bottom: 20px; /* Margin below heading */
+    font-size: 1.5em; /* Slightly larger font size */
+    animation: slideIn 0.8s ease-in-out;
+}
+
+#contact p {
+    margin: 10px 0; /* Margin for paragraphs */
+    font-size: 1.1em; /* Font size for contact info */
+    color: #f2f2f2; /* Light text color */
+}
+
+#contact a {
+    color: #ffcc00; /* Link color */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Smooth transitions */
+}
+
+#contact a:hover {
+    color: #e6b800; /* Darker yellow on hover */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); /* Subtle shadow effect */
+}
+
+/* Icon styles */
+#contact i {
+    margin-right: 8px; /* Space between icon and text */
+    color: #ffcc00; /* Icon color */
+    font-size: 1.5em; /* Larger icon size */
+    vertical-align: middle; /* Align icon with text */
+    display: inline-block; /* Required for animations */
+    transition: transform 0.3s, color 0.3s; /* Smooth transitions for hover effects */
+}
+
+/* Icon hover effects */
+#contact i:hover {
+    color: #e6b800; /* Darker yellow on hover */
+    transform: scale(1.2) rotate(15deg); /* Scale and rotate effect on hover */
+    animation: bounce 1s ease-in-out; /* Bounce animation on hover */
+}
+
+/* Optional: Adding animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px); /* Slide up effect */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-15px); /* Slide in effect */
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0); /* Normal position */
+    }
+    40% {
+        transform: translateY(-10px); /* Bounce up */
+    }
+    60% {
+        transform: translateY(-5px); /* Bounce down */
+    }
+}

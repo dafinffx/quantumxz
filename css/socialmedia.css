@@ -1,0 +1,55 @@
+/* Social Media Section */
+.social-media {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Space between icons */
+    margin: 20px 0; /* Top and bottom margin */
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.social-media a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Adjusted size */
+    height: 40px; /* Adjusted size */
+    border-radius: 50%; /* Circular buttons */
+    background-color: #333; /* Dark background for icons */
+    color: #ffcc00; /* Icon color */
+    font-size: 20px; /* Icon size */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Shadow effect */
+}
+
+.social-media a:hover {
+    background-color: #444; /* Slightly lighter background on hover */
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7); /* Stronger shadow on hover */
+}
+
+.social-media i {
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.social-media a:hover i {
+    color: #ff9900; /* Change color on hover */
+}
+
+/* Optional: Adding animations for icons */
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.social-media a {
+    animation: bounceIn 1s ease-in-out;
+}
