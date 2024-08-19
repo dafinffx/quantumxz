@@ -1,73 +1,134 @@
+/* Animation Keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 /* Modpack Section */
 .games-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 15px; /* Smaller gap */
     justify-content: center;
-    margin: 2rem auto;
-    max-width: 1200px;
-    padding: 2rem;
+    animation: fadeInUp 1.8s ease-in-out;
 }
 
 .game {
-    background: #1a1a1a;
-    border: 1px solid #555;
-    border-radius: 10px;
-    padding: 1.5rem;
+    background-color: #2a2a2a;
+    border-radius: 8px; /* Smaller border radius */
+    padding: 15px; /* Smaller padding */
     text-align: center;
-    width: calc(20% - 1.5rem); /* Increased spacing for larger images */
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
-    transition: transform 0.3s, box-shadow 0.3s;
+    max-width: 250px; /* Smaller max-width */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 2s ease-in-out;
+    margin-bottom: 5rem; /* Margin bottom set to 5rem */
 }
 
 .game img {
-    width: 100%;
+    max-width: 100%;
     height: auto;
-    aspect-ratio: 4/3; /* Adjusted aspect ratio for a larger image */
-    object-fit: cover;
-    border-radius: 5px;
+    border-radius: 6px; /* Smaller border radius */
+    margin-bottom: 8px; /* Smaller margin */
+    transition: transform 0.5s ease; /* Enhanced transition for zoom effect */
 }
 
 .game h3 {
-    font-size: 1.5rem;
-    color: #00cc77;
-    margin: 1rem 0;
+    margin: 8px 0; /* Smaller margin */
+    font-size: 1.1em; /* Smaller font size */
+    animation: slideIn 2.2s ease-in-out;
 }
 
-.game p {
-    font-size: 1rem;
-    margin-bottom: 1rem;
+.game .buy-now, .game .youtube {
+    display: inline-block;
+    margin-top: 8px; /* Smaller margin */
+    padding: 8px 12px; /* Smaller padding */
+    background-color: #ffcc00;
+    color: #1a1a1a;
+    border-radius: 4px; /* Smaller border radius */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-size: 0.9em; /* Smaller font size */
+    animation: zoomIn 2.5s ease-in-out;
 }
 
-.game button {
-    background: #00cc77;
-    color: #fff;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background 0.3s, transform 0.2s;
+.game .buy-now:hover, .game .youtube:hover {
+    background-color: #e6b800;
+    transform: scale(1.05); /* Enhanced scale on hover */
 }
 
-.game button:hover {
-    background: #009a59;
-    transform: scale(1.05);
+.game:hover {
+    transform: translateY(-10px); /* Increased translate on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Enhanced shadow effect */
 }
 
-.game button:active {
-    transform: scale(0.95);
+.game img:hover {
+    transform: scale(1.1); /* Larger scale on hover for clearer zoom */
 }
 
 /* Adjustments for Mobile and Tablet Views */
 @media (max-width: 768px) {
     .game {
-        width: calc(50% - 1.5rem); /* Two columns on tablets */
+        width: calc(50% - 15px); /* Adjusted width for tablets */
     }
 }
 
 @media (max-width: 480px) {
     .game {
         width: 100%; /* Single column on small screens */
+    }
+}
+/* Animation Keyframes for Buttons */
+@keyframes buttonHover {
+    0% {
+        background-color: #ffcc00;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+        transform: scale(1);
+    }
+    50% {
+        background-color: #e6b800;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+        transform: scale(1.1);
+    }
+    100% {
+        background-color: #ffcc00;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+        transform: scale(1);
     }
 }
