@@ -50,65 +50,6 @@ a:hover {
     animation: zoomIn 1.5s ease-in-out;
 }
 
-.games-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px; /* Smaller gap */
-    justify-content: center;
-    animation: fadeInUp 1.8s ease-in-out;
-}
-
-.game {
-    background-color: #2a2a2a;
-    border-radius: 8px; /* Smaller border radius */
-    padding: 15px; /* Smaller padding */
-    text-align: center;
-    max-width: 250px; /* Smaller max-width */
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s, box-shadow 0.3s;
-    animation: fadeIn 2s ease-in-out;
-    margin-bottom: 5rem; /* Margin bottom set to 5rem */
-}
-
-.game img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 6px; /* Smaller border radius */
-    margin-bottom: 8px; /* Smaller margin */
-    transition: transform 0.3s;
-}
-
-.game h3 {
-    margin: 8px 0; /* Smaller margin */
-    font-size: 1.1em; /* Smaller font size */
-    animation: slideIn 2.2s ease-in-out;
-}
-
-.game .buy-now, .game .youtube {
-    display: inline-block;
-    margin-top: 8px; /* Smaller margin */
-    padding: 8px 12px; /* Smaller padding */
-    background-color: #ffcc00;
-    color: #1a1a1a;
-    border-radius: 4px; /* Smaller border radius */
-    transition: background-color 0.3s, transform 0.3s;
-    font-size: 0.9em; /* Smaller font size */
-    animation: zoomIn 2.5s ease-in-out;
-}
-
-.game .buy-now:hover, .game .youtube:hover {
-    background-color: #e6b800;
-    transform: scale(1.03); /* Smaller scale on hover */
-}
-
-.game:hover {
-    transform: translateY(-8px); /* Smaller translate on hover */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
-}
-
-.game img:hover {
-    transform: scale(1.03); /* Smaller scale on hover */
-}
 
 footer {
     background-color: #121212;
