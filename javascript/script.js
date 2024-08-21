@@ -95,9 +95,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const detailsLength = detailsTextarea.value.length;
         let price;
 
-        if (detailsLength <= 100) { // Adjust the character count as needed
+        if (detailsLength <= 30) { // Adjust the character count as needed
             price = '30.000 IDR'; // Minimum price
-        } else if (detailsLength <= 200) {
+        } else if (detailsLength <= 50) {
             price = '40.000 IDR'; // Mid-range price
         } else {
             price = '50.000 IDR'; // Maximum price
@@ -223,7 +223,7 @@ if (promoResult.success) {
 
     // Prepare data for Discord webhook
     const message = {
-        content: `# Request Modpack\n**Client:** ${gameName}\n**Details:** ${gameDetails}\n**Discord Username:** ${discordUsername}\n**Price:** ${document.getElementById('price').textContent}\n**Note : PHP Banned 3 Hari**`
+        content: `# Request Modpac Quantumk\n**Client:** ${gameName}\n**Details:** ${gameDetails}\n**Discord Username:** ${discordUsername}\n**Price:** ${document.getElementById('price').textContent}\n**Note : PHP Banned 3 Hari**`
     };
 
     // Send data to Discord webhook
@@ -287,4 +287,3 @@ document.onkeydown = function(e) {
        return false;
     }
 }
-
