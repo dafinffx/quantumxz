@@ -1,11 +1,11 @@
-/* Mobile Styles */
+/* Modern Mobile Styles with Toggle Show Animation */
 @media (max-width: 768px) {
     body {
         font-size: 14px; /* Adjusted for mobile readability */
         padding: 0;
         overflow-x: hidden; /* Prevent horizontal scrolling */
-        background-color: #121212; /* Dark theme background */
-        color: #ffffff; /* Light text for dark background */
+        background: linear-gradient(135deg, #121212, #1c1c1c); /* Gradient background for a more dynamic look */
+        color: #e0e0e0; /* Softer light text for dark background */
     }
 
     .header-container {
@@ -13,112 +13,103 @@
         display: flex;
         justify-content: space-between; /* Space between logo and menu */
         align-items: center; /* Vertically center items */
-        background-color: #1f1f1f; /* Darker header background */
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.8); /* Stronger shadow */
+        background: linear-gradient(135deg, #1f1f1f, #493e3e); /* Subtle gradient for header background */
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7); /* Slightly stronger shadow for depth */
         position: relative;
         z-index: 1000;
+        border-bottom: 1px solid #333; /* Modern subtle border */
     }
 
     .header-logo {
-        max-height: 40px; /* Adjusted logo size */
-        transition: transform 0.4s ease-in-out; /* Smooth logo transition */
+        max-height: 45px; /* Adjusted logo size */
+        transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out; /* Smooth logo transition */
+        filter: brightness(1.3); /* Slightly brighter logo */
     }
 
     .header-logo:hover {
-        transform: scale(1.15); /* Slightly larger zoom on hover */
+        transform: scale(1.25); /* Slightly larger zoom on hover */
+        filter: brightness(1.1); /* Adjust brightness on hover */
     }
 
     .menu-toggle {
         display: block; /* Show menu toggle */
-        font-size: 30px; /* Larger icon for easier tap */
+        font-size: 34px; /* Larger icon for easier tap */
         cursor: pointer;
-        color: #ffcc00; /* Bright yellow for visibility */
-        transition: color 0.4s, transform 0.4s ease-in-out; /* Smooth color and transform transition */
+        color: #ffdd44; /* Brighter yellow for visibility */
+        transition: color 0.3s, transform 0.4s ease-in-out; /* Smooth color and transform transition */
     }
 
     .menu-toggle:hover {
-        color: #ff9900; /* Darker yellow on hover */
-        transform: rotate(180deg); /* Full rotate icon on hover */
+        color: #ffaa00; /* Warmer yellow on hover */
+        transform: rotate(405deg) scale(1.2); /* Slightly larger rotate and scale on hover */
     }
 
     .nav-links {
         display: none; /* Hide links by default */
         flex-direction: column; /* Stack links vertically */
         width: 100%;
-        background-color: #2b2b2b; /* Darker background for menu */
+        background: linear-gradient(135deg, #2b2b2b, #353535); /* Gradient background for menu */
         position: absolute;
-        top: 60px; /* Position below header */
+        top: 70px; /* Position below header */
         left: 0;
-        padding: 12px 0; /* Add padding for spacing */
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.9); /* Deeper shadow for a popup effect */
-        border-radius: 12px; /* Rounded corners */
+        padding: 14px 0; /* Add padding for spacing */
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.85); /* Enhanced shadow for a more modern popup effect */
+        border-radius: 16px; /* More rounded corners */
         overflow: hidden; /* Hide overflow for rounded corners */
-        animation: slideDownBounce 0.7s ease-in-out, fadeIn 0.8s ease-in-out; /* Slide down with fade in animation */
+        animation: slideDownBounce 0.6s ease-in-out, fadeIn 0.6s ease-in-out; /* Slightly faster animation */
     }
 
     .nav-links.show {
         display: flex; /* Show links when menu is toggled */
-        transform-origin: top center; /* Animation originates from the top */
-        animation: slideDownBounce 0.7s ease-in-out, fadeInLinks 0.6s ease-in-out; /* Slide down with cascading links reveal */
+        animation: toggleShow 0.6s ease-in-out forwards, slideDownBounce 0.6s ease-in-out, fadeInLinks 0.6s ease-in-out; /* Toggle show animation with slide down and fade-in */
     }
 
     .nav-link {
-        padding: 18px 24px; /* Spacing for each link */
-        color: #ffffff; /* White text for contrast */
+        padding: 20px 26px; /* Adjusted spacing for each link */
+        color: #e0e0e0; /* Softer white text */
         text-align: center;
         text-decoration: none; /* Remove underline */
         font-size: 1.2em; /* Slightly larger font size */
-        transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out, transform 0.4s ease-in-out; /* Smooth transitions */
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth transitions */
         opacity: 0; /* Start hidden for cascading effect */
         animation: revealLink 0.5s ease-in-out forwards; /* Reveal link animation */
     }
 
-    .nav-link:nth-child(1) { animation-delay: 0.1s; }
-    .nav-link:nth-child(2) { animation-delay: 0.2s; }
-    .nav-link:nth-child(3) { animation-delay: 0.3s; }
-    .nav-link:nth-child(4) { animation-delay: 0.4s; }
-    .nav-link:nth-child(5) { animation-delay: 0.5s; }
-
     .nav-link:hover {
-        background-color: #ffcc00; /* Highlight color on hover */
-        color: #121212; /* Dark text color on hover */
-        transform: scale(1.1); /* Slightly enlarge on hover */
-    }
-
-    .nav-links.hide {
-        animation: slideUpSmooth 0.7s ease-in-out, fadeOut 0.8s ease-in-out; /* Smooth slide up with fade out animation */
-        display: none; /* Hide after animation */
+        background-color: #ffdd44; /* Highlight color on hover */
+        color: #1c1c1c; /* Dark text color on hover */
+        transform: scale(1.15); /* Slightly enlarge on hover */
+        border-radius: 8px; /* Add subtle rounding on hover */
     }
 
     .container {
-        padding: 12px;
+        padding: 14px;
     }
 
     .main {
-        padding: 24px 12px;
+        padding: 26px 14px;
+        background: linear-gradient(135deg, #141414, #1e1e1e); /* Subtle gradient for main content */
     }
 
     footer {
-        padding: 12px;
-        font-size: 12px; /* Slightly larger font size */
-        background-color: #1f1f1f; /* Footer background to match header */
-        color: #ffffff; /* Light text */
+        padding: 16px;
+        font-size: 12px; /* Adjusted font size */
+        background: linear-gradient(135deg, #1f1f1f, #2b2b2b); /* Gradient for footer background */
+        color: #e0e0e0; /* Softer light text */
+        text-align: center; /* Center align text */
+        border-top: 1px solid #333; /* Subtle border for footer */
     }
 }
 
-/* Hide the menu toggle on desktop */
-@media (min-width: 769px) {
-    .menu-toggle {
-        display: none;
+/* Keyframe for Toggle Show Animation */
+@keyframes toggleShow {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px); /* Start slightly above */
     }
-
-    .nav-links {
-        display: flex; /* Show links on desktop */
-        position: static; /* Normal position */
-        flex-direction: row; /* Horizontal menu */
-        background-color: transparent; /* Transparent background */
-        box-shadow: none; /* No shadow on desktop */
-        animation: none; /* No animation on desktop */
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Settle in place */
     }
 }
 
@@ -126,53 +117,17 @@
 @keyframes slideDownBounce {
     0% {
         opacity: 0;
-        transform: translateY(-60px); /* Start from further above */
+        transform: translateY(-50px); /* Start from slightly above */
     }
     50% {
         opacity: 1;
-        transform: translateY(15px); /* Bounce slightly below final position */
+        transform: translateY(10px); /* Bounce slightly below final position */
     }
     75% {
-        transform: translateY(-8px); /* Slight bounce up */
+        transform: translateY(-5px); /* Slight bounce up */
     }
     100% {
         transform: translateY(0); /* Settle in final position */
-    }
-}
-
-/* Slide Up with Smooth Fade Out Animation for Mobile Navbar */
-@keyframes slideUpSmooth {
-    0% {
-        opacity: 1;
-        transform: translateY(0); /* Start at final position */
-    }
-    50% {
-        opacity: 0.5;
-        transform: translateY(-10px); /* Slight lift during fade */
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(-60px); /* End higher up */
-    }
-}
-
-/* Fade In Animation for Mobile Navbar */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-/* Fade Out Animation for Mobile Navbar */
-@keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
     }
 }
 
@@ -197,5 +152,25 @@
     100% {
         opacity: 1;
         transform: translateY(0); /* Final position */
+    }
+}
+
+/* Fade In Animation for Mobile Navbar */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Fade Out Animation for Mobile Navbar */
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
     }
 }
