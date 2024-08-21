@@ -1,106 +1,132 @@
-body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #1a1a1a;
-    color: #f2f2f2;
-    text-align: center;
-    animation: fadeIn 1s ease-in-out;
-}
+    /* General Body Styling */
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #1a1a1a;
+        color: #fae100;
+        text-align: center;
+        animation: fadeIn 1s ease-in-out;
+    }
 
-h2, h3 {
-    color: #ffcc00;
-    margin: 0 0 8px; /* Smaller margin */
-    font-size: 1.2em; /* Smaller font size */
-    animation: slideIn 0.8s ease-in-out;
-}
+    /* Menu Toggle (Responsive) */
+    .menu-toggle {
+        display: none;
+        font-size: 24px; /* Slightly larger icon */
+        cursor: pointer;
+        animation: fadeInLeft 1s ease-in-out;
+    }
 
-a {
-    color: #ffcc00;
-    text-decoration: none;
-    transition: color 0.3s ease;
-    font-size: 0.9em; /* Smaller font size */
-}
+    /* Note Section */
+    .note {
+        padding: 15px; /* Updated padding */
+        background-color: rgb(0, 247, 255);
+        color: #1a1a1a;
+        text-align: center;
+        font-size: 1.1em; /* Updated font size */
+        border-radius: 8px; /* Rounded corners */
+        animation: zoomIn 1.5s ease-in-out;
+    }
 
-a:hover {
-    text-decoration: underline;
-    color: #e6b800;
-}
-
-.container {
-    max-width: 1000px; /* Smaller max-width */
-    margin: 0 auto;
-    padding: 15px; /* Smaller padding */
-    text-align: center;
-    animation: fadeInUp 1.2s ease-in-out;
-}
-
-.main {
-    padding: 30px 15px; /* Smaller padding */
-    text-align: center;
-    animation: fadeInUp 1.5s ease-in-out;
-}
-
-.safety-message {
-    font-size: 1em; /* Smaller font size */
-    color: #ffcc00;
-    background-color: #333;
-    border-radius: 6px; /* Smaller border radius */
-    padding: 10px; /* Smaller padding */
-    margin: 0 0 5rem; /* Margin bottom set to 5rem */
-    animation: zoomIn 1.5s ease-in-out;
-}
-
-
+/* Footer Styles */
 footer {
     background-color: #121212;
     text-align: center;
-    padding: 15px; /* Smaller padding */
-    margin-top: 5rem; /* Margin top set to 5rem */
-    font-size: 12px; /* Smaller font size */
+    padding: 20px; /* Updated padding */
+    margin-top: 6rem; /* Updated margin-top */
+    font-size: 14px; /* Updated font size */
     animation: fadeInUp 2.8s ease-in-out;
+    border-top: 1px solid #fae100; /* Add a line at the top */
+    position: relative;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(15px); /* Smaller translate */
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Copyright Text */
+footer .copyright {
+    padding: 10px 0;
+    color: #fae100; /* Match the text color */
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(25px); /* Smaller translate */
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Optional: Add margin to the top of the footer */
+footer::before {
+    content: "";
+    display: block;
+    height: 1px;
+    background-color: #fae100; /* Color of the line */
+    margin-bottom: 20px; /* Space between line and content */
 }
 
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateX(-15px); /* Smaller translate */
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
 
-@keyframes zoomIn {
-    from {
-        opacity: 0;
-        transform: scale(0.7); /* Smaller scale */
+    /* Keyframes for Animations */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px); /* Slightly increased translate */
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
-    to {
-        opacity: 1;
-        transform: scale(1);
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px); /* Slightly increased translate */
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
-}
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateX(-20px); /* Slightly increased translate */
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes zoomIn {
+        from {
+            opacity: 0;
+            transform: scale(0.8); /* Slightly larger scale */
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    /* Hero Section with Specific Background */
+    #home {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/.pg') no-repeat center center/cover;
+        color: #08f0dc;
+        text-align: center;
+        padding: 25px 20px;
+        font-style: inherit;
+        margin-bottom: 40px; /* Increased margin */
+        border-radius: 15px; /* Enhanced border radius */
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* Enhanced shadow */
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Headline */
+    .headline {
+        font-size: 3em; /* Larger font size */
+        font-weight: bold;
+        color: #08f0dc;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7); /* Enhanced shadow */
+        margin: 0 0 20px; /* Increased margin */
+    }
+
+    /* Subheadline */
+    .subheadline {
+        font-size: 1.5em; /* Larger font size */
+        color: #08f0dc;
+        margin: 0 0 15px; /* Increased margin */
+    }
 
