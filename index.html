@@ -4,19 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantum Seller</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/request.css">
-    <link rel="stylesheet" href="css/mobile.css">
-    <link rel="stylesheet" href="css/social.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/welcome.css">
-    <link rel="stylesheet" href="css/popup.css">
-    <link rel="stylesheet" href="css/section.css">
-    <link rel="icon" href="img/quantumm.png" type="image/x-icon">
+    <title>Quantum Central Mods</title>
+    <link rel="icon" href="img/quantumx.png" type="image/x-icon">
     <link rel="icon" href="img/quantumx.png" type="image/png">
-
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MZGGMNX66X"></script>
     <script>
@@ -27,155 +21,253 @@
     </script>
 </head>
 
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
 <body>
-    <div class="overlay"></div>
-    <div class="info-popup">
-        <div class="popup-content">
-            <label class="popup-label">Information | Quantum</label><p>! New Promo Codes !</p>
-            <p>CODE : QUANTUM-01</p>
-            <p>Discount 5% For Request Modpack.</p>
-            <div class="popup-buttons">
-                <button class="popup-btn" id="popup-ok">OK</button>
-                <button class="popup-btn" id="popup-close">Close</button>
-                <a href="#request" class="popup-btn">Request Modpack</a>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-dark text-white" id="sidebar-wrapper">
+            <div class="sidebar-heading text-center py-3">Quantum Mods</div>
+            <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white" data-target="home">
+                    <i class="fas fa-home me-2"></i> Home
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white" data-target="modpacks">
+                    <i class="fas fa-box me-2"></i> Modpacks
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white" data-target="payments">
+                    <i class="fas fa-info-circle me-2"></i> Payments
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white" data-target="contact">
+                    <i class="fas fa-envelope me-2"></i> Own/Staff
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white" data-target="request">
+                    <i class="fas fa-file-alt me-2"></i> Request
+                </a>
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="flex-grow-1">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <button class="btn btn-primary" id="menu-toggle">Menu</button>
+            </nav>
+
+            <div class="container-fluid">
+                <div id="home" class="content-section visible">
+                    <h1 class="mt-4">Welcome to Quantum Central Mods</h1>
+                    <p>Selling Modpack And Request Modpack.</p>
+            
+                    <!-- Video Slider Container -->
+                    <div class="video-slider">
+                        <div class="video-slide">
+                            <iframe src="https://www.youtube.com/embed/4x13QT9sWNQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-slide">
+                            <iframe src="https://www.youtube.com/embed/BR5Duuw81gw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-slide">
+                            <iframe src="https://www.youtube.com/embed/19Pw7FR3mnI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <!-- Add more slides as needed -->
+                    </div>
+            
+                    <!-- Navigation Arrows -->
+                    <button class="prev">&#10094;</button>
+                    <button class="next">&#10095;</button>
+                </div>
+            </div>
+            
+            
+<!-- Modpacks Section -->
+<div id="modpacks" class="content-section hidden">
+    <h1 class="mt-4">Sell Modpacks</h1>
+    <div id="modpack-content" class="row">
+        <!-- Static Modpack items -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="img/quantum2.png" class="card-img-top" alt="SELL MODPACK #1">
+                <div class="card-body">
+                    <h5 class="card-title">R1 + ADDON | HIGH DM | QUALITY GRAPICH</h5>
+                    <p class="card-text">PRICE : IDR 30,000 | ENGLISH $2 USD.</p>
+                    <a href="https://discord.gg/q3hjDfb3sM" class="btn btn-primary">Buy Now</a>
+                    <a href="https://www.youtube.com/watch?v=BR5Duuw81gw&t=5s" class="btn btn-primary">Review GTA</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="path/to/modpack2.jpg" class="card-img-top" alt="Modpack 2">
+                <div class="card-body">
+                    <h5 class="card-title">Coming Soon 2</h5>
+                    <p class="card-text">Description of Modpack 2.</p>
+                    <a href="#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="path/to/modpack3.jpg" class="card-img-top" alt="Modpack 3">
+                <div class="card-body">
+                    <h5 class="card-title">Coming Soon 3</h5>
+                    <p class="card-text">Description of Modpack 3.</p>
+                    <a href="#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="path/to/modpack4.jpg" class="card-img-top" alt="Modpack 4">
+                <div class="card-body">
+                    <h5 class="card-title">Coming Soon 4</h5>
+                    <p class="card-text">Description of Modpack 4.</p>
+                    <a href="#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="path/to/modpack5.jpg" class="card-img-top" alt="Modpack 5">
+                <div class="card-body">
+                    <h5 class="card-title">Coming Soon 5</h5>
+                    <p class="card-text">Description of Modpack 5.</p>
+                    <a href="#" class="btn btn-primary">Buy Now</a>
+                </div>
             </div>
         </div>
     </div>
+    <!-- Pagination -->
+    <nav aria-label="Page navigation example" class="mt-4">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#" data-page="1">1</a></li>
+            <li class="page-item"><a class="page-link" href="#" data-page="2">2</a></li>
+            <li class="page-item"><a class="page-link" href="#" data-page="3">3</a></li>
+            <li class="page-item"><a class="page-link" href="#" data-page="4">4</a></li>
+            <li class="page-item"><a class="page-link" href="#" data-page="5">5</a></li>
+        </ul>
+    </nav>
+</div>
 
-    <header>
-        <div class="header-container">
-            <img src="img/quantumx.png" alt="Quantum Logo" class="header-logo">
-            <nav>
-                <div class="menu-toggle" id="menu-toggle">
-                    &#9776; <!-- Hamburger icon -->
-                </div>
-                <ul class="nav-links" id="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#games">GTA Compe & GTA RP</a></li>
-                    <li><a href="#request">Request</a></li>
-                    <li><a href="#contact">Social Media</a></li>
-                </ul>
-            </nav>
+
+<!-- Payments Section -->
+<div id="payments" class="content-section hidden">
+    <h1 class="mt-4">Payments</h1>
+    <p>Here you can find information on how to make payments for your purchases.</p>
+    <div class="payment-methods">
+        <div class="payment-method">
+            <img src="img/gopay.jpg" alt="Gopay Logo" class="payment-logo">
+            <div class="payment-info">
+                <h3>Gopay</h3>
+                <p><strong>Number:</strong> 08978613755</p>
+                <p><strong>Account Name:</strong> Dapin</p>
+            </div>
+        </div>
+        <div class="payment-method">
+            <img src="img/dana.jpg" alt="Dana Logo" class="payment-logo">
+            <div class="payment-info">
+                <h3>Dana</h3>
+                <p><strong>Number:</strong> 08978613755</p>
+                <p><strong>Account Name:</strong> Dapin</p>
+            </div>
+        </div>
+        <div class="payment-method">
+            <img src="img/paypal.png" alt="Paypal Logo" class="payment-logo">
+            <div class="payment-info">
+                <h3>PayPal</h3>
+                <p><strong>Link:</strong> <a href="https://www.paypal.com/paypalme/QuantumCentral" target="_blank">Paypal</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Contact Section -->
+<div id="contact" class="content-section hidden">
+    <h1 class="mt-4">Own / Staff</h1>
+    <p>List Staff.</p>
+    
+    <!-- Staff Container -->
+    <div class="staff-container">
+        <!-- Staff Member 1 -->
+        <div class="staff-member">
+            <img src="img/quantumx.png" alt="Dafin">
+            <h3>Dafin</h3>
+            <p>Developer & Founder</p>
+            <p>Dafin creates the website and scripts the bot for Quantum Central Mods.</p>
+            <p>Owner Quantum (Discord): <a href="https://discord.gg/q3hjDfb3sM" target="_blank">Discord</a></p>
+        </div>
         
-    </header>
-    <main>
-        <section id="home">
-            <h2 class="headline">Welcome to Quantum Modpack</h2>
-            <p class="subheadline">Modpack ini AMAN 100% tanpa keylogger / stealer.</p>
-            <p class="subheadline">This modpack is safe, there are no keyloggers and no viruses.</p>
-        </section>
-                   
-        <section id="games">
-            <h2>Sell More Modpack GTA Quantum ( Compe/Competitive ) </h2>
-            <div class="games-container">
-                <div class="game">
-                    <img src="img/SELLER1.png" alt="Game Tittle1">
-                    <h3>CLIENT : R1 + ADDON</h3>
-                    <h3>DETAILS : GRAPHIC HIGH LOW PC COMPE</h3>
-                    <h3>PRICE : 30.000 / $2 USD</h3>
-                    <h3>NOTE : Tag you username in channel chat discord.</h3>
-                    <a href="https://www.youtube.com/watch?v=BR5Duuw81gw" class="youtube" target="_blank">Review Modpack</a>
-                    <div class="payment-methods">
-                        <a href="https://www.paypal.com/paypalme/QuantumCentral" class="buy-now" target="_blank">Buy (Paypal English)</a>
-                        <a href="https://saweria.com/QuantumCentral" class="buy-now" target="_blank">Buy (Saweria Indo)</a>
-                    </div>
-                </div>                               
-                <div class="game">
-                    <img src="img/quantumcoming.png" alt="Game Title2">
-                    <h3>dapin2</h3>
-                    <a href="https://quantumcentral-off.netlify.app/" class="buy-now" target="_blank">Coming Soon</a>
-                    <a href="https://quantumcentral-off.netlify.app/" class="youtube" target="_blank">Coming Soon</a>
-                </div>                
-                <div class="game">
-                    <img src="img/quantumcoming.png" alt="Game Title3">
-                    <h3>dapin3</h3>
-                    <a href="https://quantumcentral-off.netlify.app/" class="buy-now" target="_blank">Coming Soon</a>
-                    <a href="https://quantumcentral-off.netlify.app/" class="youtube" target="_blank">Coming Soon</a>
-                </div>                
-                <div class="game">
-                    <img src="img/quantumcoming.png" alt="Game Title4">
-                    <h3>dapin4</h3>
-                    <a href="https://quantumcentral-off.netlify.app/" class="buy-now" target="_blank">Coming Soon</a>
-                    <a href="https://quantumcentral-off.netlify.app/" class="youtube" target="_blank">Coming Soon</a>
-                </div>                
-                <div class="game">
-                    <img src="img/quantumcoming.png" alt="Game Title5">
-                    <h3>dapin5</h3>
-                    <a href="https://quantumcentral-off.netlify.app/" class="buy-now" target="_blank">Coming Soon</a>
-                    <a href="https://quantumcentral-off.netlify.app/" class="youtube" target="_blank">Coming Soon</a>
-                </div>                
+        <!-- Staff Member 2 -->
+        <div class="staff-member">
+            <img src="img/davidstore.png" alt="David">
+            <h3>David</h3>
+            <p>Staff Handle</p>
+            <p>David handles members requests and support quantum.</p>
+            <p>Owner David Store (Discord): <a href="https://discord.gg/uMAZAaVp" target="_blank">Discord</a></p>
+        </div>
+    </div>
+</div>
+
+<!-- Request Section -->
+<div id="request" class="content-section hidden">
+    <h1 class="mt-4">Request a Modpack</h1>
+    <p>Request a modpack from us and we'll get back to you as soon as possible.</p>
+    <h2>Request Modpack</h2>
+    <form id="game-request-form">
+        <div class="form-group">
+            <label for="game-name">Client SA:MP</label>
+            <input type="text" id="game-name" name="game_name" required>
+            <small class="form-text">Example: R1, R4, DL 0.3.7, R5 OTHER</small>
+        </div>
+        <div class="form-group">
+            <label for="game-details">Details</label>
+            <textarea id="game-details" name="game_details" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="discord-username">Discord Username</label>
+            <input type="text" id="discord-username" name="discord_username" required>
+        </div>
+        <div class="form-group">
+            <label for="promo-code">Promo Code</label>
+            <input type="text" id="promo-code" name="promo_code">
+        </div>
+        <button type="submit" class="btn-submit">Submit Request</button>
+        <div id="price-info">
+            <p>Price: <span id="price">IDR</span></p>
+        </div>
+    </form>
+</div>
+                </div>
             </div>
-        </section>
-        <section id="games">
-            <h2>Sell More Modpack GTA Quantum ( Roleplay ) </h2>
-            <div class="games-container">
-                <div class="game">
-                    <img src="img/quantumcoming.png" alt="Game Tittle1">
-                    <h3>dapin1</h3>
-                    <a href="https://quantumcentral-off.netlify.app/" class="buy-now" target="_blank">Coming Soon</a>
-                    <a href="https://quantumcentral-off.netlify.app/" class="youtube" target="_blank">Coming Soon</a>
-                </div>                
-                <div class="game">
-                    <img src="img/quantumcoming.png" alt="Game Title2">
-                    <h3>dapin2</h3>
-                    <a href="https://quantumcentral-off.netlify.app/" class="buy-now" target="_blank">Coming Soon</a>
-                    <a href="https://quantumcentral-off.netlify.app/" class="youtube" target="_blank">Coming Soon</a>
-                </div>                
-                <div class="game">
-                    <img src="img/quantumcoming.png" alt="Game Title3">
-                    <h3>dapin3</h3>
-                    <a href="https://quantumcentral-off.netlify.app/" class="buy-now" target="_blank">Coming Soon</a>
-                    <a href="https://quantumcentral-off.netlify.app/" class="youtube" target="_blank">Coming Soon</a>
-                </div>                
-                <div class="game">
-                    <img src="img/quantumcoming.png" alt="Game Title4">
-                    <h3>dapin4</h3>
-                    <a href="https://quantumcentral-off.netlify.app/" class="buy-now" target="_blank">Coming Soon</a>
-                    <a href="https://quantumcentral-off.netlify.app/" class="youtube" target="_blank">Coming Soon</a>
-                </div>                
-                <div class="game">
-                    <img src="img/quantumcoming.png" alt="Game Title5">
-                    <h3>dapin5</h3>
-                    <a href="https://quantumcentral-off.netlify.app/" class="buy-now" target="_blank">Coming Soon</a>
-                    <a href="https://quantumcentral-off.netlify.app/" class="youtube" target="_blank">Coming Soon</a>
-                </div>                
-            </div>
-            <section id="request">
-                <h2>Request Modpack</h2>
-                <form id="game-request-form">
-                    <label for="game-name">Client SA:MP</label>
-                    <h3>Example: R1, R4, DL 0.3.7, R5 OTHER</h3>
-                    <input type="text" id="game-name" name="game_name" required>
-            
-                    <label for="game-details">Details</label>
-                    <textarea id="game-details" name="game_details" rows="4" required></textarea>
-            
-                    <label for="discord-username">Discord Username</label>
-                    <input type="text" id="discord-username" name="discord_username" required>
-                    <label for="promo-code">Promo Code</label>
-                    <input type="text" id="promo-code" name="promo_code">
-                    <button type="submit">Submit Request</button>
-                    <div id="price-info">
-                        <p>Price: <span id="price">IDR</span></p>
-                    </div>
-                </form>
-            </section>             
-            <section id="contact">
-                <h2>Social Media</h2>
-                <p><i class="fab fa-discord"></i> Discord: <a href="discord:https://discord.com/channels/1175447153771032737/1194943864646148097">Discord</a></p>
-                <p><i class="fab fa-youtube"></i> YouTube: <a href="https://www.youtube.com/@quanntummods" target="_blank" rel="noopener noreferrer">Youtube</a></p>
-                <p><i class="fab fa-instagram"></i> Instagram: <a href="https://www.instagram.com/quantumcentralm/" target="_blank" rel="noopener noreferrer">Instagram</a></p>    
-            </section>
-                   
-    </main>
-    <footer>
-        <p>&copy; 2024 Quantum Central Mods.</p>
-        <p>Developer By Dapin</p>
-        <p>Version 1.1</p>
-    </footer>
-    
-    <script src="javascript/header.js"></script>
-    <script src="javascript/script.js"></script>
-    <script src="javascript/welcome.js"></script> <!-- Include new JS file -->
-    
+        </div>
+        <!-- /#page-content-wrapper -->
+
+         <!-- Copyright Section -->
+         <footer class="copyright bg-light mt-auto">
+             <div class="container p-4">
+                 <p>&copy; 2024 Quantum Central Mods.</p>
+                 <p>Create by <strong>Dafin</strong>. Stay tuned for more exciting modpacks!</p>
+             </div>
+         </footer>
+
+    <!-- /#wrapper -->
+    <!-- Custom Notification -->
+    <div id="custom-notification" class="notification-overlay">
+        <div class="notification">
+            <h3>Welcome Quantum Central Modpack!</h3>
+            <p>CODE PROMO REQUEST MODPACK : "QUANTUM-001".</p>
+            <p>Expired 30-08-2024</p>
+            <button id="ok-btn" class="btn btn-primary">Ok</button>
+            <button id="close-btn" class="btn btn-secondary">Thanks</button>
+        </div>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <!-- Custom JS -->
+
+    <script src="script.js"></script>
+</body>
+
 </html>
