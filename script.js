@@ -90,7 +90,7 @@ const validPromoCodes = {
     // Add more promo codes and their discounts here
 };
 
-const promoCodeExpirationDate = new Date('2024-08-30'); // Expiration date
+const promoCodeExpirationDate = new Date('2024-08-29'); // Expiration date
 
 function isPromoCodeExpired() {
     const currentDate = new Date();
