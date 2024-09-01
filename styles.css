@@ -1,14 +1,17 @@
 /* Base Styling */
 :root {
-    --primary-color: #007bff;
-    --secondary-color: #6c757d;
-    --background-color: #f0f2f5;
-    --text-color: #333;
-    --hover-color: #0056b3;
+    --primary-color: #007bff; /* Primary color for accents and buttons */
+    --secondary-color: #6c757d; /* Secondary color for text and borders */
+    --background-color: #f0f2f5; /* Light background color for a clean look */
+    --text-color: #333; /* Dark text color for readability */
+    --hover-color: #0056b3; /* Darker primary color for hover effects */
+    --border-radius: 8px; /* Consistent border radius */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Subtle shadow color */
+    --font-family: 'Roboto', sans-serif; /* Font for the entire site */
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-family);
     background-color: var(--background-color);
     color: var(--text-color);
     margin: 0;
@@ -17,6 +20,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    line-height: 1.6; /* Improved readability */
 }
 
 #wrapper {
@@ -584,67 +588,85 @@ h1.mt-4 {
     }
 }
 
-/**slide**/
+/* Container for the video slider */
 .video-slider {
     position: relative;
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: 12px; /* More rounded corners */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow for depth */
+    perspective: 1200px; /* Enable 3D perspective */
 }
 
+/* Wrapper to handle the 3D effect */
+.slider-wrapper {
+    display: flex;
+    transition: transform 0.8s ease-in-out;
+}
+
+/* Individual slide */
 .video-slide {
-    display: none; /* Hide all slides by default */
-    width: 100%;
+    min-width: 100%;
+    height: 450px;
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out; /* Smooth fade and slide transition */
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
 }
 
+/* Style for iframe videos */
 .video-slide iframe {
     width: 100%;
-    height: 450px;
+    height: 100%;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px; /* Match border-radius of the slider container */
 }
 
+/* Navigation buttons */
 button.prev, button.next {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7); /* Darker background for visibility */
     border: none;
     color: #fff;
-    padding: 16px;
+    padding: 12px 16px;
     cursor: pointer;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     z-index: 1000;
-    font-size: 24px;
+    font-size: 28px; /* Larger font size for better visibility */
     border-radius: 50%;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
 }
 
+button.prev:hover, button.next:hover {
+    background-color: rgba(0, 0, 0, 0.9); /* Darker on hover */
+    transform: translateY(-50%) scale(1.1); /* Slightly enlarge on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Add shadow on hover */
+}
+
+/* Positioning for navigation buttons */
 button.prev {
-    left: 10px;
+    left: 15px;
 }
 
 button.next {
-    right: 10px;
+    right: 15px;
 }
 
+/* Keyframes for 3D slide animation */
 @keyframes slide {
     from {
         opacity: 0;
-        transform: translateX(50px);
+        transform: translateY(100px) rotateX(10deg);
     }
     to {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateY(0) rotateX(0deg);
     }
 }
-@keyframes slide {
-    from {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+
+/* Apply animation to current slide */
+.video-slide.active {
+    animation: slide 0.8s ease-in-out;
 }
