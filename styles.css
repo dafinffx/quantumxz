@@ -1,672 +1,241 @@
-/* Base Styling */
-:root {
-    --primary-color: #007bff; /* Primary color for accents and buttons */
-    --secondary-color: #6c757d; /* Secondary color for text and borders */
-    --background-color: #f0f2f5; /* Light background color for a clean look */
-    --text-color: #333; /* Dark text color for readability */
-    --hover-color: #0056b3; /* Darker primary color for hover effects */
-    --border-radius: 8px; /* Consistent border radius */
-    --shadow-color: rgba(0, 0, 0, 0.1); /* Subtle shadow color */
-    --font-family: 'Roboto', sans-serif; /* Font for the entire site */
-}
+document.addEventListener('DOMContentLoaded', function() {
+    const sidebarItems = document.querySelectorAll('.list-group-item');
+    const contentSections = document.querySelectorAll('.content-section');
 
-body {
-    font-family: var(--font-family);
-    background-color: var(--background-color);
-    color: var(--text-color);
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    line-height: 1.6; /* Improved readability */
-}
+    // Function to handle sidebar item clicks
+    function handleSidebarClick(e) {
+        e.preventDefault();
+        const target = this.getAttribute('data-target');
 
-#wrapper {
-    display: flex;
-    flex: 1;
-    align-items: stretch;
-    transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
+        // Hide all content sections
+        contentSections.forEach(section => {
+            section.classList.add('hidden');
+            section.classList.remove('visible');
+        });
 
-/* Sidebar Styling */
-#sidebar-wrapper {
-    min-height: 100vh;
-    width: 250px;
-    margin-left: -250px;
-    transition: margin-left 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
-    background-color: #343a40;
-    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.2);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-}
-
-#wrapper.toggled #sidebar-wrapper {
-    margin-left: 0;
-}
-
-.sidebar-heading {
-    padding: 1.5rem;
-    font-size: 1.8rem;
-    text-align: center;
-    background-color: #212529;
-    color: #ffffff;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: background-color 0.5s ease;
-}
-
-.sidebar-heading:hover {
-    background-color: #495057;
-}
-
-.list-group-item {
-    border: none;
-    padding: 1rem 1.5rem;
-    background-color: #343a40;
-    color: #ffffff;
-    transition: background-color 0.5s ease, transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.list-group-item:hover {
-    background-color: #495057;
-    transform: translateX(10px);
-    box-shadow: inset 5px 0 0 var(--primary-color);
-}
-
-#page-content-wrapper {
-    width: 100%;
-    padding: 20px;
-    transition: padding-left 0.5s ease;
-}
-
-#wrapper.toggled #page-content-wrapper {
-    padding-left: 0;
-}
-
-.hidden {
-    display: none;
-    opacity: 0;
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    transform: translateY(20px);
-}
-
-.visible {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-h1.mt-4 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--text-color);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-    animation: fadeInUp 1.2s ease;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.card {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    border: none;
-    border-radius: 8px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-}
-
-.card-img-top {
-    height: 200px;
-    object-fit: cover;
-    border-radius: 8px 8px 0 0;
-    transition: transform 0.3s ease;
-}
-
-.card-img-top:hover {
-    transform: scale(1.05);
-}
-
-.card-title {
-    font-size: 1.4rem;
-    font-weight: bold;
-}
-
-.card-text {
-    font-size: 1rem;
-    color: var(--secondary-color);
-    text-align: center;
-}
-
-.btn-primary {
-    background-color: var(--primary-color);
-    border: none;
-    color: #ffffff;
-    padding: 12px 24px;
-    font-size: 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.btn-primary:hover {
-    background-color: var(--hover-color);
-    transform: translateY(-2px);
-}
-
-@media (min-width: 768px) {
-    #sidebar-wrapper {
-        margin-left: 0;
+        // Show the targeted content section
+        const targetSection = document.getElementById(target);
+        if (targetSection) {
+            targetSection.classList.remove('hidden');
+            targetSection.classList.add('visible');
+        }
     }
 
-    #wrapper.toggled #sidebar-wrapper {
-        margin-left: -250px;
+    // Add click event listeners to sidebar items
+    sidebarItems.forEach(item => {
+        item.addEventListener('click', handleSidebarClick);
+    });
+
+    // Toggle sidebar
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebarClose = document.getElementById('sidebar-close');
+    const wrapper = document.getElementById('wrapper');
+
+    if (menuToggle && wrapper) {
+        menuToggle.addEventListener('click', function () {
+            wrapper.classList.toggle('toggled');
+        });
     }
 
-    #page-content-wrapper {
-        padding-left: 250px;
-    }
-}
-
-
-.developer-info h2 {
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: #343a40;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-}
-
-.developer-info p {
-    font-size: 1rem;
-    color: #6c757d;
-}
-
-.developer-info a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.developer-info a:hover {
-    text-decoration: underline;
-}
-
-/* Footer Styling */
-footer.copyright {
-    font-size: 0.9rem;
-    color: #6c757d;
-    text-align: center;
-    border-top: 1px solid #ddd;
-    padding: 10px 0;
-    margin-top: auto;
-    background-color: #ffffff;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
-#request {
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    position: relative;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-#request.hidden {
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-#request.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-h1.mt-4 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #212529;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-    text-align: center;
-    animation: fadeInUp 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) both;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.request-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group {
-    margin-bottom: 20px;
-    position: relative;
-}
-
-.form-group label {
-    display: block;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #343a40;
-    margin-bottom: 5px;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 12px;
-    font-size: 1rem;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    background-color: #f8f9fa;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    outline: none;
-    background-color: #ffffff;
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-    color: #6c757d;
-}
-
-.btn-submit {
-    background-color: #007bff;
-    border: none;
-    color: #ffffff;
-    padding: 12px 24px;
-    font-size: 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    align-self: center;
-}
-
-.btn-submit:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
-}
-
-.form-group textarea {
-    resize: vertical;
-}
-/* Gaya kursor berlapis */
-.cursor-layer {
-    position: fixed;
-    width: 30px;
-    height: 30px;
-    border: 2px solid #007bff;
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s ease, background-color 0.3s ease;
-    z-index: 1000;
-}
-
-.cursor-layer::before {
-    content: '';
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    border: 2px solid #ffffff;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-/* Custom CSS for notification */
-.notification-overlay {
-    display: none; /* Hidden by default */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Slightly darker background for better contrast */
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.notification-overlay.show {
-    display: flex; /* Show overlay */
-    opacity: 1; /* Fully opaque */
-}
-
-.notification {
-    background-color: #ffffff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3); /* Larger shadow for a floating effect */
-    text-align: center;
-    max-width: 400px;
-    width: 90%;
-    transform: scale(0.9);
-    transition: transform 0.4s ease, opacity 0.4s ease;
-}
-
-.notification.show {
-    transform: scale(1); /* Scale to original size */
-    opacity: 1; /* Fully opaque */
-}
-
-.notification h3 {
-    margin-bottom: 20px;
-    color: #333;
-    font-size: 1.8rem; /* Larger font size for emphasis */
-    font-weight: 700; /* Bolder font weight */
-}
-
-.notification p {
-    margin-bottom: 25px;
-    color: #555; /* Slightly darker color for better readability */
-    font-size: 1.2rem; /* Slightly larger font size */
-}
-
-.notification button {
-    margin: 0 10px;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    font-weight: 600; /* Bolder font weight */
-}
-
-.notification .btn-primary {
-    background-color: #007bff;
-    color: #ffffff;
-}
-
-.notification .btn-primary:hover {
-    background-color: #0056b3;
-}
-
-.notification .btn-secondary {
-    background-color: #6c757d;
-    color: #ffffff;
-}
-
-.notification .btn-secondary:hover {
-    background-color: #5a6268;
-}
-
-/* Add subtle animation to the buttons */
-.notification button:hover {
-    transform: scale(1.05);
-}
-/* Payments Section */
-.payment-methods {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.payment-method {
-    display: flex;
-    align-items: center;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    width: calc(33.333% - 20px);
-    box-sizing: border-box;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.payment-method:hover {
-    transform: translateY(-10px); /* Lift the payment method up */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance shadow */
-}
-
-.payment-logo {
-    width: 40px; /* Adjust the width of the logo */
-    height: auto; /* Maintain aspect ratio */
-    margin-right: 15px; /* Space between logo and text */
-}
-
-.payment-info {
-    flex: 1;
-    transition: color 0.3s ease;
-}
-
-.payment-method:hover .payment-info {
-    color: #007bff; /* Change text color on hover */
-}
-
-.payment-info h3 {
-    margin: 0;
-    color: #333;
-    font-size: 1.4rem;
-    transition: transform 0.3s ease;
-}
-
-.payment-method:hover .payment-info h3 {
-    transform: translateX(10px); /* Slightly move the heading */
-}
-
-.payment-info p {
-    margin: 5px 0;
-    color: #666;
-    font-size: 1.1rem;
-}
-
-.payment-info a {
-    color: #007bff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.payment-info a:hover {
-    color: #0056b3; /* Change link color on hover */
-    text-decoration: underline;
-}
-/** Contact Section **/
-.content-section {
-    padding: 40px;
-    background: #f9f9f9;
-}
-
-.staff-container {
-    display: flex;
-    flex-wrap: nowrap; /* Prevent wrapping to ensure horizontal layout */
-    gap: 20px; /* Spacing between staff members */
-    overflow-x: auto; /* Allow horizontal scrolling if needed */
-    padding: 10px; /* Optional padding */
-    justify-content: center; /* Center items horizontally */
-}
-
-/* Style for each staff member card */
-.staff-member {
-    padding: 20px;
-    background: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-    z-index: 1;
-    position: relative;
-    width: 250px; /* Fixed width for horizontal layout */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-/* Hover effect */
-.staff-member:hover {
-    transform: scale(1.05) rotateY(10deg); /* 3D rotation effect on hover */
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(to right, #f5f7fa, #c3cfe2);
-}
-
-/* Image styles */
-.staff-member img {
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    margin-bottom: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Image hover effect */
-.staff-member img:hover {
-    transform: scale(1.1) rotate(10deg); /* Smooth zoom and rotate */
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-}
-
-/* Special animation for the button */
-.staff-member a {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease, background-color 0.3s ease;
-    background-color: #ffffff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    position: relative;
-    display: inline-block;
-    overflow: hidden;
-}
-
-.staff-member a:hover {
-    color: #fff;
-    background-color: #007bff;
-}
-
-/* Ensure responsiveness */
-@media (max-width: 768px) {
-    .staff-container {
-        flex-wrap: wrap; /* Allow wrapping on smaller screens */
-        gap: 10px; /* Adjust gap */
+    if (sidebarClose) {
+        sidebarClose.addEventListener('click', function () {
+            wrapper.classList.remove('toggled');
+        });
     }
 
-    .staff-member {
-        width: 100%; /* Full width on smaller screens */
-        max-width: 300px; /* Max width for large screens */
+    // Click outside sidebar to close it
+    document.addEventListener('click', (event) => {
+        if (!event.target.closest('#sidebar-wrapper') && !event.target.closest('#menu-toggle') && !wrapper.classList.contains('toggled')) {
+            wrapper.classList.remove('toggled');
+        }
+    });
+
+    // Notification handling
+    const notificationOverlay = document.getElementById('custom-notification');
+    const okButton = document.getElementById('ok-btn');
+    const closeButton = document.getElementById('close-btn');
+
+    function showNotification() {
+        if (notificationOverlay) {
+            notificationOverlay.classList.add('show');
+        }
     }
-}
 
-/* Container for the video slider */
-.video-slider {
-    position: relative;
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    overflow: hidden;
-    border-radius: 12px; /* More rounded corners */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow for depth */
-    perspective: 1200px; /* Enable 3D perspective */
-}
-
-/* Wrapper to handle the 3D effect */
-.slider-wrapper {
-    display: flex;
-    transition: transform 0.8s ease-in-out;
-}
-
-/* Individual slide */
-.video-slide {
-    min-width: 100%;
-    height: 450px;
-    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out; /* Smooth fade and slide transition */
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
-}
-
-/* Style for iframe videos */
-.video-slide iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-radius: 12px; /* Match border-radius of the slider container */
-}
-
-/* Navigation buttons */
-button.prev, button.next {
-    background-color: rgba(0, 0, 0, 0.7); /* Darker background for visibility */
-    border: none;
-    color: #fff;
-    padding: 12px 16px;
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1000;
-    font-size: 28px; /* Larger font size for better visibility */
-    border-radius: 50%;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
-}
-
-button.prev:hover, button.next:hover {
-    background-color: rgba(0, 0, 0, 0.9); /* Darker on hover */
-    transform: translateY(-50%) scale(1.1); /* Slightly enlarge on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Add shadow on hover */
-}
-
-/* Positioning for navigation buttons */
-button.prev {
-    left: 15px;
-}
-
-button.next {
-    right: 15px;
-}
-
-/* Keyframes for 3D slide animation */
-@keyframes slide {
-    from {
-        opacity: 0;
-        transform: translateY(100px) rotateX(10deg);
+    function hideNotification() {
+        if (notificationOverlay) {
+            notificationOverlay.classList.remove('show');
+        }
     }
-    to {
-        opacity: 1;
-        transform: translateY(0) rotateX(0deg);
+
+    if (okButton) {
+        okButton.addEventListener('click', hideNotification);
     }
+
+    if (closeButton) {
+        closeButton.addEventListener('click', hideNotification);
+    }
+
+    // Display notification when page loads
+    showNotification();
+
+// Game request form handling
+const gameDetailsInput = document.getElementById('game-details');
+const promoCodeInput = document.getElementById('promo-code'); // Assuming there's an input for promo code
+const priceDisplay = document.getElementById('price');
+const form = document.getElementById('game-request-form');
+const webhookUrl = 'https://discord.com/api/webhooks/1273987541544079503/XC_PJZsHb6gSRqUpqX_9Q7mVO4tNii3EIuRjulinEn8Us2M2ZAKFIjCvEIcMvS2zXNXv'; // Replace with your Discord webhook URL
+
+const validPromoCodes = {
+    'QUANTUM-001': 0.5, // 50% discount
+    // Add more promo codes and their discounts here
+};
+
+const promoCodeExpirationDate = new Date('2024-08-29'); // Expiration date
+
+function isPromoCodeExpired() {
+    const currentDate = new Date();
+    return currentDate > promoCodeExpirationDate;
 }
 
-/* Apply animation to current slide */
-.video-slide.active {
-    animation: slide 0.8s ease-in-out;
+function updatePrice() {
+    const detailsText = gameDetailsInput.value.trim();
+    const wordCount = detailsText.split(/\s+/).filter(Boolean).length; // Count words, ignoring empty strings
+    let basePrice;
+
+    if (wordCount <= 20) {
+        basePrice = 30000; // Base price
+    } else if (wordCount <= 40) {
+        basePrice = 40000; // Price for up to 40 words
+    } else {
+        basePrice = 50000; // Maximum price
+    }
+
+    let finalPrice = basePrice;
+    const promoCode = promoCodeInput.value.trim().toUpperCase(); // Read and normalize the promo code
+
+    if (!isPromoCodeExpired() && promoCode && validPromoCodes[promoCode]) {
+        finalPrice = basePrice * validPromoCodes[promoCode];
+    }
+
+    priceDisplay.textContent = `IDR ${finalPrice.toLocaleString()}`;
 }
+
+if (gameDetailsInput) {
+    gameDetailsInput.addEventListener('input', updatePrice);
+}
+
+if (promoCodeInput) {
+    promoCodeInput.addEventListener('input', updatePrice);
+}
+
+if (form) {
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const formData = new FormData(form);
+        const data = {
+            game_name: formData.get('game_name'),
+            game_details: formData.get('game_details'),
+            discord_username: formData.get('discord_username'),
+            promo_code: formData.get('promo_code'),
+            price: priceDisplay.textContent // Include the price in the data
+        };
+
+        if (!isPromoCodeExpired() && data.promo_code && !validPromoCodes[data.promo_code.toUpperCase()]) {
+            alert('Invalid Promo Code. Please enter a valid code.');
+            return; // Exit the function if promo code is invalid
+        }
+
+        fetch(webhookUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                content: `# Request Modpack\n\n` +
+                         `**Client SA:MP:** ${data.game_name}\n` +
+                         `**Details:** ${data.game_details}\n` +
+                         `**Price:** ${data.price}\n` +
+                         `**Discord Username:** ${data.discord_username}\n` +
+                         `**Note:** PHP BAN 3 DAYS`
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.text();
+        })
+        .then(result => {
+            try {
+                const json = JSON.parse(result);
+                console.log('Success:', json);
+            } catch (e) {
+                console.log('Success (non-JSON):', result);
+            }
+            alert('Request submitted successfully!');
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert(`There was an error submitting your request: ${error.message}`);
+        });
+    });
+}
+
+
+    // Prevent right-click and keyboard shortcuts for developer tools
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+
+    document.onkeydown = function(e) {
+        if(e.keyCode === 123 || 
+           (e.ctrlKey && e.shiftKey && (e.keyCode === 'I'.charCodeAt(0) || 
+           e.keyCode === 'C'.charCodeAt(0) || 
+           e.keyCode === 'J'.charCodeAt(0))) || 
+           (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))) {
+            return false;
+        }
+    };
+
+    // Prevent dragging and right-click on images
+    document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('dragstart', e => e.preventDefault());
+        img.addEventListener('contextmenu', e => e.preventDefault());
+    });
+
+    // Slideshow functionality
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.video-slide');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+        slides.forEach((slide) => {
+            slide.style.display = 'none';  
+            slide.style.opacity = 0;
+        });
+        slides[index].style.display = 'block';
+        slides[index].style.opacity = 1;
+        slides[index].style.animation = 'slide 1s ease-in-out';
+    }
+
+    function nextSlide() {
+        slideIndex = (slideIndex + 1) % totalSlides;
+        showSlide(slideIndex);
+    }
+
+    function prevSlide() {
+        slideIndex = (slideIndex - 1 + totalSlides) % totalSlides;
+        showSlide(slideIndex);
+    }
+
+    // Show the first slide initially
+    showSlide(slideIndex);
+
+    // Set up event listeners for the buttons
+    document.querySelector('.next').addEventListener('click', nextSlide);
+    document.querySelector('.prev').addEventListener('click', prevSlide);
+
+    // Auto-slide every 5 seconds
+    const autoSlideInterval = setInterval(nextSlide, 3000);
+});
