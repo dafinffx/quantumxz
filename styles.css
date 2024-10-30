@@ -32,7 +32,7 @@ body {
     transition: all 0.5s cubic-bezier(0.42, 0, 0.58, 1); /* Smooth and modern cubic-bezier curve */
     background: #f8f9fa; /* Light background for better contrast */
     overflow: hidden; /* Prevent content overflow */
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle inner shadow for depth */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), 0 0 10px rgba(0, 0, 0, 0.05);
     border-radius: 8px; /* Rounded corners for a softer look */
 }
 
@@ -134,16 +134,14 @@ h1.mt-4 {
 
 
 .card {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    border: none;
-    border-radius: 8px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    transform: scale(1.03);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
+
 
 .card-img-top {
     height: 200px;
@@ -168,20 +166,17 @@ h1.mt-4 {
 }
 
 .btn-primary {
-    background-color: var(--primary-color);
+    background: linear-gradient(45deg, #007bff, #0056b3);
     border: none;
     color: #ffffff;
-    padding: 12px 24px;
-    font-size: 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .btn-primary:hover {
-    background-color: var(--hover-color);
-    transform: translateY(-2px);
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
 
 @media (min-width: 768px) {
     #sidebar-wrapper {
