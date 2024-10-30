@@ -82,11 +82,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const webhookUrl = 'https://discord.com/api/webhooks/1273987541544079503/XC_PJZsHb6gSRqUpqX_9Q7mVO4tNii3EIuRjulinEn8Us2M2ZAKFIjCvEIcMvS2zXNXv'; // Replace with your Discord webhook URL
 
     const validPromoCodes = {
-        'PLOSION-001': 0.90,
+        'PLOSION-002': 0.90,
         // Add more promo codes and their discounts here
     };
 
-    const promoCodeExpirationDate = new Date('2024-10-25');
+    const promoCodeExpirationDate = new Date('2024-11-10');
 
     function isPromoCodeExpired() {
         return new Date() > promoCodeExpirationDate;
