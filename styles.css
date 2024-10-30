@@ -347,23 +347,23 @@ h1.mt-4 {
 
 /* Submit button styling */
 .btn-submit {
-    background: linear-gradient(45deg, #007bff, #0056b3);
+    background-color: #4CAF50; /* Green */
+    color: white;
     border: none;
-    color: #ffffff;
-    padding: 14px 28px;
-    font-size: 1.1rem;
-    border-radius: 12px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
     cursor: pointer;
-    transition: background 0.4s ease, transform 0.3s ease, box-shadow 0.4s ease;
-    align-self: center;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 .btn-submit:hover {
-    background: linear-gradient(45deg, #0056b3, #003d7a);
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    background-color: #45a049; /* Darker green */
+    transform: scale(1.05);
 }
+
 
 /* Allow vertical resizing for textarea */
 .form-group textarea {
