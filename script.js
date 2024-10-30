@@ -135,7 +135,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     form.addEventListener('submit', function (event) {
         event.preventDefault();
-
+    
+        // Show notification
+        const notification = document.getElementById('notification');
+        notification.classList.remove('hidden');
+    
+        // Add close functionality for the notification
+        document.getElementById('notification-close').addEventListener('click', function () {
+            notification.classList.add('hidden');
+        });
+    
         if (submissionCount < maxSubmissions) {
             const formData = new FormData(form);
             const data = {
@@ -145,12 +154,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 promo_code: formData.get('promo_code'),
                 price: priceDisplay.textContent
             };
-
+    
             if (!isPromoCodeExpired() && data.promo_code && !validPromoCodes[data.promo_code.toUpperCase()]) {
                 alert('Invalid Promo Code. Please enter a valid code.');
                 return;
             }
-
+    
             fetch(webhookUrl, {
                 method: 'POST',
                 headers: {
@@ -175,13 +184,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert('Request submitted successfully!');
                 submissionCount++;
                 localStorage.setItem('submissionCount', submissionCount);
-
+    
                 if (submissionCount >= maxSubmissions) {
                     localStorage.setItem('limitTimestamp', Date.now() + limitDuration);
                     disableSubmit();
                 }
-
+    
                 form.reset();
+                notification.classList.add('hidden'); // Hide notification after submission
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -193,6 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('You have reached the maximum number of submissions. Please try again in 24 hours.');
         }
     });
+    
 
     // Prevent right-click and keyboard shortcuts (unchanged)
     document.addEventListener('contextmenu', function(e) {
@@ -246,3 +257,119 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const autoSlideInterval = setInterval(nextSlide, 3000);
 });
+const express = require("express");
+const axios = require("axios");
+
+const express = require("express");
+const axios = require("axios");
+const app = express();
+const clientID = "1301190119532920832";
+const clientSecret = "7blo1I5rEFckV6v7qLj1jiawhN9hfmVh";
+const redirectURI = "https://x-plosion.netlify.app/";
+const webhookUrl = "https://discord.com/api/webhooks/1301193612280725607/Yd9MpI3dtNImglOMY1turFRlG502mdnBLh9YOYRc9afGqjJkz9TgPUaKXstg27mCvMqp"; // Replace with your actual Discord webhook URL
+
+app.use(express.json()); // For parsing application/json
+
+app.get("/callback", async (req, res) => {
+    const code = req.query.code;
+
+    try {
+        // Exchange the code for an access token
+        const tokenResponse = await axios.post("https://discord.com/api/oauth2/token", new URLSearchParams({
+            client_id: clientID,
+            client_secret: clientSecret,
+            grant_type: "authorization_code",
+            code,
+            redirect_uri: redirectURI,
+        }), {
+            headers: { "Content-Type": "application/x-www-form-urlencoded" }
+        });
+
+        const accessToken = tokenResponse.data.access_token;
+
+        // Use the access token to get user info
+        const userResponse = await axios.get("https://discord.com/api/users/@me", {
+            headers: { Authorization: `Bearer ${accessToken}` }
+        });
+
+        const username = userResponse.data.username;
+        const userId = userResponse.data.id; // Get the user's Discord ID
+        const avatar = userResponse.data.avatar; // Get the user's avatar
+
+        // Construct the avatar URL
+        const avatarUrl = avatar ? `https://cdn.discordapp.com/avatars/${userId}/${avatar}.png` : '';
+
+        // Log the username using the webhook
+        await axios.post(webhookUrl, {
+            content: `User **${username}** (ID: ${userId}) has signed in.`,
+        });
+
+        // Send user info as a response
+        res.json({ username, avatarUrl });
+    } catch (error) {
+        console.error("Error authenticating:", error);
+        res.status(500).send("Error during authentication");
+    }
+});
+
+app.listen(3000, () => {
+    console.log("Server is running on http://localhost:5500");
+});
+app.get("/callback", async (req, res) => {
+    const code = req.query.code;
+
+    try {
+        // Exchange the code for an access token
+        const response = await axios.post("https://discord.com/api/oauth2/token", new URLSearchParams({
+            client_id: clientID,
+            client_secret: clientSecret,
+            grant_type: "authorization_code",
+            code,
+            redirect_uri: redirectURI,
+        }), {
+            headers: { "Content-Type": "application/x-www-form-urlencoded" }
+        });
+
+        const accessToken = response.data.access_token;
+
+        // Use the access token to get user info
+        const userResponse = await axios.get("https://discord.com/api/users/@me", {
+            headers: { Authorization: `Bearer ${accessToken}` }
+        });
+
+        const username = userResponse.data.username;
+        const userId = userResponse.data.id;
+        const avatar = userResponse.data.avatar; // Get the user's avatar ID
+
+        // Construct the avatar URL
+        const avatarUrl = `https://cdn.discordapp.com/avatars/${userId}/${avatar}.png`;
+
+        // Log the username using the webhook
+        await axios.post(webhookUrl, {
+            content: `User **${username}** (ID: ${userId}) has signed in.`,
+        });
+
+        // Send user info as a response, including avatar URL
+        res.json({ ...userResponse.data, avatarUrl });
+    } catch (error) {
+        console.error("Error authenticating:", error);
+        res.send("Error during authentication");
+    }
+});
+async function handleCallback() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+
+    if (code) {
+        try {
+            const response = await fetch(`/callback?code=${code}`);
+            const data = await response.json();
+            setDiscordUsername(data.username); // Set the Discord username
+            document.getElementById("user-avatar").src = data.avatarUrl; // Set the avatar URL
+            document.getElementById("user-info").style.display = 'flex'; // Show user info
+            alert('Logged in successfully as ' + data.username);
+        } catch (error) {
+            console.error('Error fetching user data:', error);
+        }
+    }
+}
