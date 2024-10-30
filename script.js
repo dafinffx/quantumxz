@@ -313,7 +313,7 @@ app.get("/callback", async (req, res) => {
 });
 
 app.listen(3000, () => {
-    console.log("Server is running on http://localhost:5500");
+    console.log("Server is running on https://x-plosion.netlify.app/");
 });
 app.get("/callback", async (req, res) => {
     const code = req.query.code;
